@@ -23,8 +23,11 @@ public class Input {
 
      return source;
  }
+ public String getCommand(){
+     return command;
+ }
 
- public void getCommand(String command ){
+ public void setCommand(String command ){
 
      this.command = command;
     }
