@@ -36,6 +36,7 @@ jobs:
       run: exit 1
       
   code_cleanup:
+    needs: autotesting
     runs-on: ubuntu-latest
     steps:
 
