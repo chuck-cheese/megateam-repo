@@ -1,0 +1,52 @@
+allprojects {
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+    }
+
+    dependencies {
+
+        implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.2'
+        implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2'
+
+        testImplementation 'junit:junit:4.13.2'
+
+    }
+}
+
+apply plugin: 'application'
+
+application {
+    mainClass = 'com.megateam.lab.Lab'
+}
+
+dependencies {
+
+    implementation project(':core')
+
+}
+
+jar {
+
+    manifest {
+        attributes 'Main-Class': 'com.megateam.lab.Lab'
+    }
+
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+}

@@ -1,0 +1,3 @@
+rootProject.name = 'programming-team'
+
+include('core')
