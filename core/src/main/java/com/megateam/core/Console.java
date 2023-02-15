@@ -1,5 +1,3 @@
 package com.megateam.core;
 
-public class Console
-{
-}
+public class Console {}
