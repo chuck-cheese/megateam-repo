@@ -5,9 +5,15 @@ import com.megateam.core.exceptions.InvalidInputException;
 public class Validator
 {
 
+	/**
+	 * Method validates string being reliable for usage in command parsing
+	 * @param userInput user input string for validation
+	 * @return true if userInput is correct
+	 * @throws InvalidInputException if userInput is incorrect
+	 */
 	public static boolean validateInput(String userInput) throws InvalidInputException
 	{
-		if ("".equals(userInput))
+		if ("".equals(userInput.trim()))
 			throw new InvalidInputException("Please enter non-empty command");
 
 		return true;
