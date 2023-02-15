@@ -6,7 +6,7 @@ public class Validator
 {
 
 	/**
-	 * Method validates string being reliable for usage in command parsing
+	 * Method validates string being reliable for usage in command resolving
 	 * @param userInput user input string for validation
 	 * @return true if userInput is correct
 	 * @throws InvalidInputException if userInput is incorrect
