@@ -1,13 +1,22 @@
 package com.megateam.core.data;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import java.util.Objects;
 import java.util.Random;
 
+@JacksonXmlRootElement(localName = "venue")
 public class Venue {
 
-	int id;
-	String name;
-	Long capacity;
-	VenueType type;
+	@JacksonXmlProperty(localName = "venueId")
+	private int id;
+	@JacksonXmlProperty(localName = "venueName")
+	private String name;
+	@JacksonXmlProperty(localName = "capacity")
+	private Long capacity;
+	@JacksonXmlProperty(localName = "venueType")
+	private VenueType type;
 
 	public static class VenueBuilder {
 
@@ -60,6 +69,43 @@ public class Venue {
 
 	public VenueType getType() {
 		return type;
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("Venue:").append('\n');
+		sb.append(String.format("id: %d", id)).append('\n');
+		sb.append(String.format("name: %s", name)).append('\n');
+		sb.append(String.format("capacity: %d", capacity)).append('\n');
+		sb.append(String.format("type: %s", (type == null) ? "is not defined" : type.name())).append('\n');
+
+		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+
+		if (!(o instanceof Venue venue))
+			return false;
+
+		if (id != venue.id) return false;
+		if (!Objects.equals(name, venue.name)) return false;
+		if (!Objects.equals(capacity, venue.capacity)) return false;
+		return type == venue.type;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = id;
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
+		result = 31 * result + (type != null ? type.hashCode() : 0);
+		return result;
 	}
 
 	public static VenueBuilder builder() {
