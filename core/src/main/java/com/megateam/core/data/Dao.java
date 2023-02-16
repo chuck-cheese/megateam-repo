@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
-
 	ZonedDateTime getCreationDate();
 	void add(T item);
 
