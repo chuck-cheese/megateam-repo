@@ -21,9 +21,10 @@ public class Ticket implements Comparable<Ticket> {
 	@Override
 	public int compareTo(Ticket ticket)
 	{
+		if (ticket.equals(this))
+			return 0;
 
-		if (id < ticket.id)
-		return 0;
+		return (id < ticket.id) ? -1 : 1;
 	}
 
 	public static class TicketBuilder {
