@@ -56,7 +56,7 @@ public class ValidatorTest {
 		}
 		catch (InvalidInputException e)
 		{
-			assertEquals("Venue name cannot be not null!", e.getMessage());
+			assertEquals("Venue name cannot be empty string!", e.getMessage());
 		}
 	}
 
