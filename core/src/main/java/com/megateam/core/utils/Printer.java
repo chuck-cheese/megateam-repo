@@ -1,4 +1,4 @@
-package com.megateam.core.data;
+package com.megateam.core.utils;
 
 
 public interface Printer {

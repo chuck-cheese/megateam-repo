@@ -1,7 +1,9 @@
-package com.megateam.core.data;
+package com.megateam.core.utils;
 
 
-    public class ConsolePrinter implements Printer {
+import com.megateam.core.utils.Printer;
+
+public class ConsolePrinter implements Printer {
 
         @Override
         public void print(String printable) {
