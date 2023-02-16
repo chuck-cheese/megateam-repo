@@ -118,4 +118,9 @@ public class Ticket {
 	public Venue getVenue() {
 		return venue;
 	}
+
+	public static TicketBuilder builder()
+	{
+		return new TicketBuilder();
+	}
 }
