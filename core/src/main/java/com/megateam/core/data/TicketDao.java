@@ -19,6 +19,12 @@ public class TicketDao implements Dao<Ticket>
 	}
 
 	@Override
+	public ZonedDateTime getCreationDate()
+	{
+		return creationDate;
+	}
+
+	@Override
 	public void add(Ticket item)
 	{
 		if (item != null)

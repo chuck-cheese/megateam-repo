@@ -1,9 +1,12 @@
 package com.megateam.core.data;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
+
+	ZonedDateTime getCreationDate();
 	void add(T item);
 
 	Optional<T> get(long id);
