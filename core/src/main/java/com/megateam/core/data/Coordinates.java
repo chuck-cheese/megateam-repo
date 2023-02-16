@@ -2,15 +2,15 @@ package com.megateam.core.data;
 
 public class Coordinates {
 
-	static Float x;
-	int y;
+	private Float x;
+	private int y;
 
-	public class CoordinatesBuilder {
+	public static class CoordinatesBuilder {
 
 		private Float x;
 		private int y;
 
-		public void CoordinatesBuilder() {}
+		private CoordinatesBuilder() {}
 
 		public CoordinatesBuilder setX(Float x) {
 			this.x = x;
@@ -40,7 +40,7 @@ public class Coordinates {
 		return y;
 	}
 
-	public CoordinatesBuilder builder() {
+	public static CoordinatesBuilder builder() {
 		return new CoordinatesBuilder();
 	}
 }
