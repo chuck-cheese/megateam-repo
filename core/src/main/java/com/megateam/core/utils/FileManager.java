@@ -30,6 +30,12 @@ public class FileManager {
 		return file;
 	}
 
+	/**
+	 * Service method for generating xml string for concrete Ticket
+	 * @param ticket is ticket to be converted to xml
+	 * @return an xml string for exact ticket
+	 * @throws JsonProcessingException if something gone wrong while convertation
+	 */
 	private static String readyToWriteTicket(Ticket ticket) throws JsonProcessingException
 	{
 		XmlMapper mapper = new XmlMapper();
@@ -39,6 +45,12 @@ public class FileManager {
 		return mapper.writeValueAsString(ticket);
 	}
 
+	/**
+	 * Method saves a list of tickets into a specified file
+	 * @param file where the list of tickets should appear
+	 * @param tickets list of tickets
+	 * @throws IOException if something gone wrong while creating FileOutputStream
+	 */
 	public static void saveToFile(File file, List<Ticket> tickets) throws IOException
 	{
 		try (FileOutputStream fos = new FileOutputStream(file))
