@@ -1,5 +1,6 @@
 package com.megateam.core.data;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Venue {
@@ -73,6 +74,30 @@ public class Venue {
 		sb.append(String.format("type: %s", (type == null) ? "is not defined" : type.name())).append('\n');
 
 		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+
+		if (!(o instanceof Venue venue))
+			return false;
+
+		if (id != venue.id) return false;
+		if (!Objects.equals(name, venue.name)) return false;
+		if (!Objects.equals(capacity, venue.capacity)) return false;
+		return type == venue.type;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = id;
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
+		result = 31 * result + (type != null ? type.hashCode() : 0);
+		return result;
 	}
 
 	public static VenueBuilder builder() {
