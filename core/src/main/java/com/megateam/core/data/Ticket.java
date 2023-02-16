@@ -1,7 +1,5 @@
 package com.megateam.core.data;
 
-import com.megateam.core.Coordinates;
-
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Random;
