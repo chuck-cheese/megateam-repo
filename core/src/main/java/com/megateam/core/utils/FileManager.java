@@ -7,7 +7,6 @@ import com.megateam.core.exceptions.FileException;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FileManager {
