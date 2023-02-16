@@ -1,42 +1,44 @@
 package com.megateam.core.utils;
+
 import java.util.List;
 
 public class Input {
-    String command;
-    List<String> arguments;
-    CommandSource source;
- public void  Input(String command,
-          List<String> arguments,
-          CommandSource source){
 
-     this.command = command;
-     this.arguments = arguments;
-     this.source = source;
+	String command;
+	List<String> arguments;
+	CommandSource source;
 
- }
+	public void Input(
+		String command,
+		List<String> arguments,
+		CommandSource source
+	) {
+		this.command = command;
+		this.arguments = arguments;
+		this.source = source;
+	}
 
- public List <String> getArguments(){
-     return   arguments;
+	public List<String> getArguments() {
+		return arguments;
+	}
 
- }
- public CommandSource getSource(){
+	public CommandSource getSource() {
+		return source;
+	}
 
-     return source;
- }
- public String getCommand(){
-     return command;
- }
+	public String getCommand() {
+		return command;
+	}
 
- public void setCommand(String command ){
+	public void setCommand(String command) {
+		this.command = command;
+	}
 
-     this.command = command;
-    }
-public void setArguments(List <String> arguments){
-     this.arguments = arguments;
+	public void setArguments(List<String> arguments) {
+		this.arguments = arguments;
+	}
 
-}
-
-public void setSource(CommandSource source){
-     this.source = source;
- }
+	public void setSource(CommandSource source) {
+		this.source = source;
+	}
 }

@@ -1,5 +1,5 @@
 package com.megateam.core.utils;
 
 public interface CommandHandler {
-    void handle(Input input);
+	void handle(Input input);
 }
