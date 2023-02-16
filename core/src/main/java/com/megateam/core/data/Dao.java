@@ -19,5 +19,4 @@ public interface Dao<T> {
 	void removeFirst();
 
 	void removeLast();
-
 }
