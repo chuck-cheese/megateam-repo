@@ -2,7 +2,6 @@ package com.megateam.core.data;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
 import java.util.Objects;
 
 @JacksonXmlRootElement(localName = "coordinates")
@@ -10,6 +9,7 @@ public class Coordinates {
 
 	@JacksonXmlProperty(localName = "x")
 	private Float x;
+
 	@JacksonXmlProperty(localName = "y")
 	private int y;
 
@@ -49,26 +49,22 @@ public class Coordinates {
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return String.format("Coordinates: (%f, %d)", x, y);
 	}
 
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		if (this == o) return true;
 
-		if (!(o instanceof Coordinates coordinates))
-			return false;
+		if (!(o instanceof Coordinates coordinates)) return false;
 
 		if (y != coordinates.y) return false;
 		return Objects.equals(x, coordinates.x);
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int result = x != null ? x.hashCode() : 0;
 		result = 31 * result + y;
 		return result;

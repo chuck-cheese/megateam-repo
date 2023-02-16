@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.megateam.core.data.Ticket;
 import com.megateam.core.exceptions.FileException;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +36,8 @@ public class FileManager {
 	 * @return an xml string for exact ticket
 	 * @throws JsonProcessingException if something gone wrong while convertation
 	 */
-	private static String readyToWriteTicket(Ticket ticket) throws JsonProcessingException
-	{
+	private static String readyToWriteTicket(Ticket ticket)
+		throws JsonProcessingException {
 		XmlMapper mapper = new XmlMapper();
 		mapper.findAndRegisterModules();
 
@@ -52,14 +51,11 @@ public class FileManager {
 	 * @param tickets list of tickets
 	 * @throws IOException if something gone wrong while creating FileOutputStream
 	 */
-	public static void saveToFile(File file, List<Ticket> tickets) throws IOException
-	{
-		try (FileOutputStream fos = new FileOutputStream(file))
-		{
-			for (Ticket ticket : tickets)
-			{
-				if (ticket != null)
-				{
+	public static void saveToFile(File file, List<Ticket> tickets)
+		throws IOException {
+		try (FileOutputStream fos = new FileOutputStream(file)) {
+			for (Ticket ticket : tickets) {
+				if (ticket != null) {
 					String outString = readyToWriteTicket(ticket) + '\n';
 					fos.write(outString.getBytes());
 				}
@@ -73,8 +69,8 @@ public class FileManager {
 	 * @return returns an exact ticket for xml
 	 * @throws JsonProcessingException if something gone wrong while parsing ticket
 	 */
-	private static Ticket readTicket(String ticketString) throws JsonProcessingException
-	{
+	private static Ticket readTicket(String ticketString)
+		throws JsonProcessingException {
 		XmlMapper mapper = new XmlMapper();
 		mapper.findAndRegisterModules();
 
@@ -87,18 +83,14 @@ public class FileManager {
 	 * @return list of tickets parsed from file
 	 * @throws IOException if something gone wrong while creating FileReader
 	 */
-	public static List<Ticket> getFromFile(File file) throws IOException
-	{
+	public static List<Ticket> getFromFile(File file) throws IOException {
 		List<Ticket> tickets = new ArrayList<>();
 
-		try (BufferedReader br = new BufferedReader(new FileReader(file)))
-		{
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			List<String> lines = br.lines().toList();
 
-			for (String ticketString : lines)
-			{
-				if (!"".equals(ticketString))
-				{
+			for (String ticketString : lines) {
+				if (!"".equals(ticketString)) {
 					tickets.add(readTicket(ticketString));
 				}
 			}

@@ -2,7 +2,6 @@ package com.megateam.core.data;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -13,29 +12,34 @@ public class Ticket implements Comparable<Ticket> {
 
 	@JacksonXmlProperty(localName = "id")
 	private Long id;
+
 	@JacksonXmlProperty(localName = "creationDate")
 	private ZonedDateTime creationDate;
 
 	@JacksonXmlProperty(localName = "name")
 	private String name;
+
 	@JacksonXmlProperty(localName = "coordinates")
 	private Coordinates coordinates;
+
 	@JacksonXmlProperty(localName = "price")
 	private Float price;
+
 	@JacksonXmlProperty(localName = "comment")
 	private String comment;
+
 	@JacksonXmlProperty(localName = "refundable")
 	private Boolean refundable;
+
 	@JacksonXmlProperty(localName = "type")
 	private TicketType type;
+
 	@JacksonXmlProperty(localName = "venue")
 	private Venue venue;
 
 	@Override
-	public int compareTo(Ticket ticket)
-	{
-		if (ticket.equals(this))
-			return 0;
+	public int compareTo(Ticket ticket) {
+		if (ticket.equals(this)) return 0;
 
 		return (id < ticket.id) ? -1 : 1;
 	}
@@ -143,34 +147,38 @@ public class Ticket implements Comparable<Ticket> {
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Ticket:").append('\n');
 		sb.append(String.format("id: %d", id)).append('\n');
-		sb.append(String.format("creationDate: %s", creationDate.toString())).append('\n');
+		sb
+			.append(String.format("creationDate: %s", creationDate.toString()))
+			.append('\n');
 		sb.append(String.format("name: %s", name)).append('\n');
-		sb.append(String.format("coordinates: %s", coordinates.toString())).append('\n');
+		sb
+			.append(String.format("coordinates: %s", coordinates.toString()))
+			.append('\n');
 		sb.append(String.format("price: %f", price)).append('\n');
 		sb.append(String.format("comment: %s", comment)).append('\n');
 		sb.append(String.format("refundable: %b", refundable)).append('\n');
-		sb.append(String.format("type: %s", (type == null) ? "not defined" : type.name())).append('\n');
+		sb
+			.append(
+				String.format("type: %s", (type == null) ? "not defined" : type.name())
+			)
+			.append('\n');
 		sb.append(String.format("venue: %s", venue.toString())).append('\n');
 
 		return sb.toString();
 	}
 
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		if (this == o) return true;
 
-		if (!(o instanceof Ticket ticket))
-			return false;
+		if (!(o instanceof Ticket ticket)) return false;
 
 		if (!Objects.equals(id, ticket.id)) return false;
-		if (!Objects.equals(creationDate, ticket.creationDate))
-			return false;
+		if (!Objects.equals(creationDate, ticket.creationDate)) return false;
 		if (!Objects.equals(name, ticket.name)) return false;
 		if (!Objects.equals(coordinates, ticket.coordinates)) return false;
 		if (!Objects.equals(price, ticket.price)) return false;
@@ -181,8 +189,7 @@ public class Ticket implements Comparable<Ticket> {
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int result = id.hashCode();
 		result = 31 * result + creationDate.hashCode();
 
@@ -196,8 +203,7 @@ public class Ticket implements Comparable<Ticket> {
 		return result;
 	}
 
-	public static TicketBuilder builder()
-	{
+	public static TicketBuilder builder() {
 		return new TicketBuilder();
 	}
 }
