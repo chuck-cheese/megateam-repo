@@ -1,5 +1,6 @@
 package com.megateam.core.commans;
 
+import com.megateam.core.exceptions.ExecutionException;
 import com.megateam.core.utils.CommandSource;
 import com.megateam.core.utils.Printer;
 import java.io.Reader;
@@ -27,9 +28,21 @@ public abstract class Command {
 		return reader;
 	}
 
+	public Command setPrinter(Printer printer)
+	{
+		this.printer = printer;
+		return this;
+	}
+
+	public Command setReader(Reader reader)
+	{
+		this.reader = reader;
+		return this;
+	}
+
 	public String help() {
 		return String.format("%s - %s", name, description);
 	}
 
-	public abstract boolean execute(List<String> arguments);
+	public abstract boolean execute(List<String> arguments) throws ExecutionException;
 }
