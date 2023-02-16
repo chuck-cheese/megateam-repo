@@ -1,4 +1,4 @@
-package com.megateam.core.utils;
+package com.megateam.core.data;
 
 public enum TicketType {
     VIP,
