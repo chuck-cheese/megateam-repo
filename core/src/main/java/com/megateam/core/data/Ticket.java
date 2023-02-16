@@ -1,21 +1,34 @@
 package com.megateam.core.data;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Random;
 
+@JacksonXmlRootElement(localName = "ticket")
 public class Ticket implements Comparable<Ticket> {
 
+	@JacksonXmlProperty(localName = "id")
 	private Long id;
+	@JacksonXmlProperty(localName = "creationDate")
 	private ZonedDateTime creationDate;
 
+	@JacksonXmlProperty(localName = "name")
 	private String name;
+	@JacksonXmlProperty(localName = "coordinates")
 	private Coordinates coordinates;
+	@JacksonXmlProperty(localName = "price")
 	private Float price;
+	@JacksonXmlProperty(localName = "comment")
 	private String comment;
+	@JacksonXmlProperty(localName = "refundable")
 	private Boolean refundable;
+	@JacksonXmlProperty(localName = "type")
 	private TicketType type;
+	@JacksonXmlProperty(localName = "venue")
 	private Venue venue;
 
 	@Override

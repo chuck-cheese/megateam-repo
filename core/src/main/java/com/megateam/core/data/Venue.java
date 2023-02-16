@@ -1,14 +1,22 @@
 package com.megateam.core.data;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.Objects;
 import java.util.Random;
 
+@JacksonXmlRootElement(localName = "venue")
 public class Venue {
 
-	int id;
-	String name;
-	Long capacity;
-	VenueType type;
+	@JacksonXmlProperty(localName = "venueId")
+	private int id;
+	@JacksonXmlProperty(localName = "venueName")
+	private String name;
+	@JacksonXmlProperty(localName = "capacity")
+	private Long capacity;
+	@JacksonXmlProperty(localName = "venueType")
+	private VenueType type;
 
 	public static class VenueBuilder {
 

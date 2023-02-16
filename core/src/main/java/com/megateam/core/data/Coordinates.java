@@ -1,10 +1,16 @@
 package com.megateam.core.data;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.Objects;
 
+@JacksonXmlRootElement(localName = "coordinates")
 public class Coordinates {
 
+	@JacksonXmlProperty(localName = "x")
 	private Float x;
+	@JacksonXmlProperty(localName = "y")
 	private int y;
 
 	public static class CoordinatesBuilder {
