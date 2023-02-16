@@ -2,6 +2,7 @@ package com.megateam.core.utils;
 
 import static org.junit.Assert.*;
 
+import com.megateam.core.data.VenueType;
 import com.megateam.core.exceptions.InvalidInputException;
 import org.junit.Test;
 
@@ -41,6 +42,33 @@ public class ValidatorTest {
 		try {
 			assertTrue(Validator.validateCoordinates(222, 0));
 		} catch (InvalidInputException ignored) {
+			assertTrue(false);
+		}
+	}
+
+	@Test
+	public void validateIncorrectVenueTest()
+	{
+		try
+		{
+			Validator.validateVenue("", 10L, VenueType.BAR);
+			assertTrue(false);
+		}
+		catch (InvalidInputException e)
+		{
+			assertEquals("Venue name cannot be not null!", e.getMessage());
+		}
+	}
+
+	@Test
+	public void validateCorrectVenueTest()
+	{
+		try
+		{
+			assertTrue(Validator.validateVenue("test", 100L, VenueType.BAR));
+		}
+		catch (InvalidInputException ignored)
+		{
 			assertTrue(false);
 		}
 	}
