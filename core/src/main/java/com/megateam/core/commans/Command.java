@@ -27,6 +27,18 @@ public abstract class Command {
 		return reader;
 	}
 
+	public Command setPrinter(Printer printer)
+	{
+		this.printer = printer;
+		return this;
+	}
+
+	public Command setReader(Reader reader)
+	{
+		this.reader = reader;
+		return this;
+	}
+
 	public String help() {
 		return String.format("%s - %s", name, description);
 	}
