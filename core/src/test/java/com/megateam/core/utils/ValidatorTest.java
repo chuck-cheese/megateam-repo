@@ -25,4 +25,23 @@ public class ValidatorTest {
 			assertTrue(false);
 		}
 	}
+
+	@Test
+	public void validateIncorrectCoordinatesTest() {
+		try {
+			Validator.validateCoordinates(-400, 0);
+			assertTrue(false);
+		} catch (InvalidInputException e) {
+			assertEquals("X coordinate should be greater than -390", e.getMessage());
+		}
+	}
+
+	@Test
+	public void validateCorrectCoordinatesTest() {
+		try {
+			assertTrue(Validator.validateCoordinates(222, 0));
+		} catch (InvalidInputException ignored) {
+			assertTrue(false);
+		}
+	}
 }
