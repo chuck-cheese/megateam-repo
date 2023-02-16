@@ -1,5 +1,7 @@
 package com.megateam.core.data;
 
+import java.util.Objects;
+
 public class Coordinates {
 
 	private Float x;
@@ -44,6 +46,26 @@ public class Coordinates {
 	public String toString()
 	{
 		return String.format("Coordinates: (%f, %d)", x, y);
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+
+		if (!(o instanceof Coordinates coordinates))
+			return false;
+
+		if (y != coordinates.y) return false;
+		return Objects.equals(x, coordinates.x);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = x != null ? x.hashCode() : 0;
+		result = 31 * result + y;
+		return result;
 	}
 
 	public static CoordinatesBuilder builder() {
