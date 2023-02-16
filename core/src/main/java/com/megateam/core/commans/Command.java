@@ -28,14 +28,12 @@ public abstract class Command {
 		return reader;
 	}
 
-	public Command setPrinter(Printer printer)
-	{
+	public Command setPrinter(Printer printer) {
 		this.printer = printer;
 		return this;
 	}
 
-	public Command setReader(Reader reader)
-	{
+	public Command setReader(Reader reader) {
 		this.reader = reader;
 		return this;
 	}
@@ -44,5 +42,6 @@ public abstract class Command {
 		return String.format("%s - %s", name, description);
 	}
 
-	public abstract boolean execute(List<String> arguments) throws ExecutionException;
+	public abstract boolean execute(List<String> arguments)
+		throws ExecutionException;
 }
