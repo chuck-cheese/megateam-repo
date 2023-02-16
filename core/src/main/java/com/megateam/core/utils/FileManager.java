@@ -6,6 +6,8 @@ import com.megateam.core.data.Ticket;
 import com.megateam.core.exceptions.FileException;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileManager {
@@ -64,5 +66,45 @@ public class FileManager {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Service method for parsing an exact ticket from xml string
+	 * @param ticketString ticket string in xml format
+	 * @return returns an exact ticket for xml
+	 * @throws JsonProcessingException if something gone wrong while parsing ticket
+	 */
+	private static Ticket readTicket(String ticketString) throws JsonProcessingException
+	{
+		XmlMapper mapper = new XmlMapper();
+		mapper.findAndRegisterModules();
+
+		return mapper.readValue(ticketString, Ticket.class);
+	}
+
+	/**
+	 * Method parses a list of tickets from a specified file
+	 * @param file file to read
+	 * @return list of tickets parsed from file
+	 * @throws IOException if something gone wrong while creating FileReader
+	 */
+	public static List<Ticket> getFromFile(File file) throws IOException
+	{
+		List<Ticket> tickets = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(file)))
+		{
+			List<String> lines = br.lines().toList();
+
+			for (String ticketString : lines)
+			{
+				if (!"".equals(ticketString))
+				{
+					tickets.add(readTicket(ticketString));
+				}
+			}
+		}
+
+		return tickets;
 	}
 }
