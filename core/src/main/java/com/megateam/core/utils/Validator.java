@@ -18,4 +18,19 @@ public class Validator {
 
 		return true;
 	}
+
+	/**
+	 * Methods validates coordinates fields
+	 * @param x X-Coord value
+	 * @param y Y-Coord value
+	 * @return true if coordinates are correct
+	 * @throws InvalidInputException if specified coordinates are incorrect
+	 */
+	public static boolean validateCoordinates(float x, int y) throws InvalidInputException
+	{
+		if (x < -390)
+			throw new InvalidInputException("X coordinate should be greater than -390");
+
+		return true;
+	}
 }
