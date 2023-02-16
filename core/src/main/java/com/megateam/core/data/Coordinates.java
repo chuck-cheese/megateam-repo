@@ -1,4 +1,4 @@
-package com.megateam.core;
+package com.megateam.core.data;
 
 
 public class Coordinates {
