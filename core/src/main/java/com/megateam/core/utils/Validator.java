@@ -84,32 +84,37 @@ public class Validator {
 	 * @throws InvalidInputException if one of specified ticket fields is incorrect
 	 */
 	public static boolean validateTicket(
-			String name,
-			Coordinates coordinates,
-			Float price,
-			String comment,
-			boolean refundable,
-			TicketType type,
-			Venue venue
-	) throws InvalidInputException
-	{
-		if (name == null)
-			throw new InvalidInputException("Ticket name cannot be null!");
+		String name,
+		Coordinates coordinates,
+		Float price,
+		String comment,
+		boolean refundable,
+		TicketType type,
+		Venue venue
+	) throws InvalidInputException {
+		if (name == null) throw new InvalidInputException(
+			"Ticket name cannot be null!"
+		);
 
-		if ("".equals(name.trim()))
-			throw new InvalidInputException("Ticket name cannot be empty string!");
+		if ("".equals(name.trim())) throw new InvalidInputException(
+			"Ticket name cannot be empty string!"
+		);
 
-		if (price < 0)
-			throw new InvalidInputException("Ticket price should be greater than 0!");
+		if (price < 0) throw new InvalidInputException(
+			"Ticket price should be greater than 0!"
+		);
 
-		if (comment == null)
-			throw new InvalidInputException("Ticket comment cannot be null!");
+		if (comment == null) throw new InvalidInputException(
+			"Ticket comment cannot be null!"
+		);
 
-		if ("".equals(comment.trim()))
-			throw new InvalidInputException("Ticket comment cannot be empty string!");
+		if ("".equals(comment.trim())) throw new InvalidInputException(
+			"Ticket comment cannot be empty string!"
+		);
 
-		if (venue == null)
-			throw new InvalidInputException("Ticket venue cannot be null!");
+		if (venue == null) throw new InvalidInputException(
+			"Ticket venue cannot be null!"
+		);
 
 		return true;
 	}
