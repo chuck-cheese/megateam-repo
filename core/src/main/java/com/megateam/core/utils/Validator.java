@@ -44,19 +44,26 @@ public class Validator {
 	 * @return true if venue is correct
 	 * @throws InvalidInputException if specified venue fields are invalid
 	 */
-	public static boolean validateVenue(String name, long capacity, VenueType type) throws InvalidInputException
-	{
-		if (name == null)
-			throw new InvalidInputException("Venue name cannot be not null!");
+	public static boolean validateVenue(
+		String name,
+		long capacity,
+		VenueType type
+	) throws InvalidInputException {
+		if (name == null) throw new InvalidInputException(
+			"Venue name cannot be not null!"
+		);
 
-		if (type == null)
-			throw new InvalidInputException("Venue type cannot be null!");
+		if (type == null) throw new InvalidInputException(
+			"Venue type cannot be null!"
+		);
 
-		if ("".equals(name.trim()))
-			throw new InvalidInputException("Venue name cannot be empty string!");
+		if ("".equals(name.trim())) throw new InvalidInputException(
+			"Venue name cannot be empty string!"
+		);
 
-		if (capacity < 0)
-			throw new InvalidInputException("Venue capacity should be greater than 0!");
+		if (capacity < 0) throw new InvalidInputException(
+			"Venue capacity should be greater than 0!"
+		);
 
 		return true;
 	}
