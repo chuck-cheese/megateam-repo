@@ -1,5 +1,8 @@
 package com.megateam.core.utils;
 
+import com.megateam.core.data.Coordinates;
+import com.megateam.core.data.TicketType;
+import com.megateam.core.data.Venue;
 import com.megateam.core.data.VenueType;
 import com.megateam.core.exceptions.InvalidInputException;
 
@@ -64,6 +67,49 @@ public class Validator {
 		if (capacity < 0) throw new InvalidInputException(
 			"Venue capacity should be greater than 0!"
 		);
+
+		return true;
+	}
+
+	/**
+	 * Method validates ticket fields
+	 * @param name ticket name
+	 * @param coordinates ticket coordinates
+	 * @param price ticket price
+	 * @param comment ticket comment
+	 * @param refundable ticket refundable status
+	 * @param type ticket type
+	 * @param venue venue type
+	 * @return true if all ticket fields are correct
+	 * @throws InvalidInputException if one of specified ticket fields is incorrect
+	 */
+	public static boolean validateTicket(
+			String name,
+			Coordinates coordinates,
+			Float price,
+			String comment,
+			boolean refundable,
+			TicketType type,
+			Venue venue
+	) throws InvalidInputException
+	{
+		if (name == null)
+			throw new InvalidInputException("Ticket name cannot be null!");
+
+		if ("".equals(name.trim()))
+			throw new InvalidInputException("Ticket name cannot be empty string!");
+
+		if (price < 0)
+			throw new InvalidInputException("Ticket price should be greater than 0!");
+
+		if (comment == null)
+			throw new InvalidInputException("Ticket comment cannot be null!");
+
+		if ("".equals(comment.trim()))
+			throw new InvalidInputException("Ticket comment cannot be empty string!");
+
+		if (venue == null)
+			throw new InvalidInputException("Ticket venue cannot be null!");
 
 		return true;
 	}
