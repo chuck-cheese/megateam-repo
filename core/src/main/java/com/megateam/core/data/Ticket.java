@@ -119,6 +119,24 @@ public class Ticket {
 		return venue;
 	}
 
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("Ticket:").append('\n');
+		sb.append(String.format("id: %d", id)).append('\n');
+		sb.append(String.format("creationDate: %s", creationDate.toString())).append('\n');
+		sb.append(String.format("name: %s", name)).append('\n');
+		sb.append(String.format("coordinates: %s", coordinates.toString())).append('\n');
+		sb.append(String.format("price: %f", price)).append('\n');
+		sb.append(String.format("comment: %s", comment)).append('\n');
+		sb.append(String.format("refundable: %b", refundable)).append('\n');
+		sb.append(String.format("type: %s", (type == null) ? "not defined" : type.name())).append('\n');
+		sb.append(String.format("venue: %s", venue.toString())).append('\n');
+
+		return sb.toString();
+	}
+
 	public static TicketBuilder builder()
 	{
 		return new TicketBuilder();
