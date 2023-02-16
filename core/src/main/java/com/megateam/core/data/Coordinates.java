@@ -40,6 +40,12 @@ public class Coordinates {
 		return y;
 	}
 
+	@Override
+	public String toString()
+	{
+		return String.format("Coordinates: (%f, %d)", x, y);
+	}
+
 	public static CoordinatesBuilder builder() {
 		return new CoordinatesBuilder();
 	}
