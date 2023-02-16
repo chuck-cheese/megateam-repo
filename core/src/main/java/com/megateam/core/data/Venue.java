@@ -62,6 +62,19 @@ public class Venue {
 		return type;
 	}
 
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("Venue:").append('\n');
+		sb.append(String.format("id: %d", id)).append('\n');
+		sb.append(String.format("name: %s", name)).append('\n');
+		sb.append(String.format("capacity: %d", capacity)).append('\n');
+		sb.append(String.format("type: %s", (type == null) ? "is not defined" : type.name())).append('\n');
+
+		return sb.toString();
+	}
+
 	public static VenueBuilder builder() {
 		return new VenueBuilder();
 	}
