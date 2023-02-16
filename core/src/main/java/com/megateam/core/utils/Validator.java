@@ -1,5 +1,6 @@
 package com.megateam.core.utils;
 
+import com.megateam.core.data.VenueType;
 import com.megateam.core.exceptions.InvalidInputException;
 
 public class Validator {
@@ -26,10 +27,43 @@ public class Validator {
 	 * @return true if coordinates are correct
 	 * @throws InvalidInputException if specified coordinates are incorrect
 	 */
-	public static boolean validateCoordinates(float x, int y) throws InvalidInputException
-	{
-		if (x < -390)
-			throw new InvalidInputException("X coordinate should be greater than -390");
+	public static boolean validateCoordinates(float x, int y)
+		throws InvalidInputException {
+		if (x < -390) throw new InvalidInputException(
+			"X coordinate should be greater than -390"
+		);
+
+		return true;
+	}
+
+	/**
+	 * Method validates venue fields
+	 * @param name venue name
+	 * @param capacity venue capacity
+	 * @param type venue type from VenueType
+	 * @return true if venue is correct
+	 * @throws InvalidInputException if specified venue fields are invalid
+	 */
+	public static boolean validateVenue(
+		String name,
+		long capacity,
+		VenueType type
+	) throws InvalidInputException {
+		if (name == null) throw new InvalidInputException(
+			"Venue name cannot be not null!"
+		);
+
+		if (type == null) throw new InvalidInputException(
+			"Venue type cannot be null!"
+		);
+
+		if ("".equals(name.trim())) throw new InvalidInputException(
+			"Venue name cannot be empty string!"
+		);
+
+		if (capacity < 0) throw new InvalidInputException(
+			"Venue capacity should be greater than 0!"
+		);
 
 		return true;
 	}
